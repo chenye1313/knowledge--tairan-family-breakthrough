@@ -1,0 +1,77 @@
+[
+  {
+    "target": "TairanVoice.md",
+    "operation_id": "readTairanVoice",
+    "use_existing_file": true
+  },
+  {
+    "target": "SystemBoundary.md",
+    "operation_id": "readSystemBoundary",
+    "use_existing_file": true
+  },
+  {
+    "target": "KeyTerms.md",
+    "operation_id": "readKeyTerms",
+    "use_existing_file": true
+  },
+  {
+    "target": "FamilyOverview.md",
+    "operation_id": "readFamilyOverview",
+    "use_existing_file": true
+  },
+  {
+    "target": "Parents.md",
+    "operation_id": "readParents",
+    "use_existing_file": true
+  },
+  {
+    "target": "Marriage.md",
+    "operation_id": "readMarriage",
+    "use_existing_file": true
+  },
+  {
+    "target": "Parenting.md",
+    "operation_id": "readParenting",
+    "use_existing_file": true
+  },
+  {
+    "target": "Siblings.md",
+    "operation_id": "readSiblings",
+    "use_existing_file": true
+  },
+  {
+    "target": "FamilyCulture.md",
+    "operation_id": "readFamilyCulture",
+    "use_existing_file": true
+  },
+  {
+    "target": "FamilyGovernance.md",
+    "operation_id": "readFamilyGovernance",
+    "use_existing_file": true
+  },
+  {
+    "target": "FamilyLegacy.md",
+    "operation_id": "readFamilyLegacy",
+    "use_existing_file": true
+  },
+  {
+    "target": "PracticeMethods.md",
+    "operation_id": "readPracticeMethods",
+    "use_existing_file": true
+  },
+  {
+    "target": "PracticeTools.md",
+    "operation_id": "readPracticeTools",
+    "use_existing_file": true
+  },
+  {
+    "target": "SourceEvidence.md",
+    "operation_id": "readSourceEvidence",
+    "use_existing_file": true
+  },
+  {
+    "target": "RoutingReference.md",
+    "operation_id": "readRoutingReference",
+    "use_existing_file": true
+  }
+]

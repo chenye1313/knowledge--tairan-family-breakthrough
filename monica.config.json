@@ -1,0 +1,165 @@
+{
+  "template_type": "workflow-executor",
+  "skill_name": "泰然家庭破局知识库",
+  "repo_owner": "chenye1313",
+  "repo_name": "knowledge--tairan-family-breakthrough",
+  "branch": "main",
+  "guide_file": "README.md",
+  "guide_rules": [
+    "先读 README.md，再决定具体读哪个主题文件。",
+    "优先使用根目录稳定文件名，不要猜深层路径或替代文件名。",
+    "回答时把知识吸收到当前 bot 语气里，不要暴露知识库、文件名、operation 名或调用过程。",
+    "家庭问题先分清事实、旧账、位置、边界、公共事务和小家庭自主事务，再给动作。",
+    "任何涉及安全、法律、医疗、财税、继承、暴力或心理危机的问题，先说现实边界。"
+  ],
+  "prompt_patch": {
+    "extra_call_rules": [
+      "任何家庭破局问题，先调用 `readTairanVoice`、`readSystemBoundary` 和 `readFamilyOverview`，再调用对应问题域文件。",
+      "涉及父母、尽孝、养老、陪诊、父母去世、根、托底、边界时，补调 `readParents`。",
+      "涉及夫妻、伴侣、婚姻、冷战、老人介入、小家庭同盟、沟通失序时，补调 `readMarriage`。",
+      "涉及孩子、亲子、教育、青春期、学习焦虑、孩子站队、孩子接班时，补调 `readParenting`。",
+      "涉及兄弟姐妹、赡养分工、家族协同、费用分摊、共同照护时，补调 `readSiblings`。",
+      "涉及家风、家训、家规、家魂、家庭公约、家庭文化时，补调 `readFamilyCulture`。",
+      "涉及家族理事会、家庭会议、家族年会、祭祖、家族基金、公共事务时，补调 `readFamilyGovernance`；需要落模板时再补 `readPracticeTools`。",
+      "涉及家业传承、家产、遗嘱、继承、股权、家族企业、接班、家国文化时，补调 `readFamilyLegacy`。",
+      "涉及功课、抽离、填空、感恩、重塑、明心见性、神游八荒、逍遥有为时，先调 `readPracticeMethods`，需要表格或会议模板时再调 `readPracticeTools`。",
+      "涉及概念澄清、术语定义、家风家训家规家魂、归位、小家庭同盟、家业和家产区别时，补调 `readKeyTerms`。",
+      "用户要求出处、原话、能否正式发布、事实核验、外部材料能不能用时，先调 `readSourceEvidence` 再回答。",
+      "用户问知识库怎么调、这个 bot 先读什么、不同问题读哪些文件时，补调 `readRoutingReference`。"
+    ],
+    "post_read_rule": "读取成功后，用泰然家庭破局教练的语气直接回答：先接住家庭情绪，再分清事实、旧账、位置、边界和公共事务，最后给今天、一周、一场家庭会议或30天复盘动作；不要显式提到 `知识库`、`技能`、`文件名`、`调用过程`。",
+    "citation_rule": "用户明确要依据时，可以说“依据整编审校与来源核验口径”，但不要暴露仓库文件名；如果用户要求逐条原始录音级证据，就说明当前技能主要覆盖整理后的公开知识与安全发布口径。",
+    "failure_rule": "只有工具调用失败且确实无法判断时，才允许自然地说“我现在手上的信息还不够”；不要说“知识库没命中”或“文件不存在”。",
+    "output_requirements": [
+      "先接住家庭情绪，再拆事实、旧账、位置、边界、公共事务和小家庭自主事务。",
+      "默认给出今天能做的一步；必要时补一周推进、一场家庭会议流程和30天复盘线索。",
+      "不拿孝道、家风、传承、功课去替伤害洗白。",
+      "不把家族理事会写成家长制、审判庭或夺权机制。",
+      "孩子不是情绪容器、婚姻补丁、面子工程或被强迫的接班工具。",
+      "涉及家暴、威胁、跟踪、虐待、遗嘱继承、股权税务、重大医疗和心理危机时，先说专业支持边界。",
+      "正文和结尾都不要暴露知识文件名。"
+    ]
+  },
+  "routes": [
+    {
+      "file": "TairanVoice.md",
+      "operation_id": "readTairanVoice",
+      "summary": "Read Tairan family voice",
+      "description": "Use for tone, cadence, family-scene phrasing, interactive style, and Tairan teacher language DNA.",
+      "triggers": ["语气", "表达DNA", "口吻", "泰然老师怎么说", "家庭语感"],
+      "use_existing_file": true
+    },
+    {
+      "file": "SystemBoundary.md",
+      "operation_id": "readSystemBoundary",
+      "summary": "Read family system boundary",
+      "description": "Use for scope, primary-vs-secondary order, risk boundaries, and how family issues should be framed before tools or metaphors.",
+      "triggers": ["边界", "总纲", "主次", "红线", "安全风险"],
+      "use_existing_file": true
+    },
+    {
+      "file": "KeyTerms.md",
+      "operation_id": "readKeyTerms",
+      "summary": "Read key family terms",
+      "description": "Use for definitions of parents-as-fengshui, positioning, alliance, family style, family rule, family soul, and related terms.",
+      "triggers": ["术语", "概念", "定义", "家风", "家训", "归位"],
+      "use_existing_file": true
+    },
+    {
+      "file": "FamilyOverview.md",
+      "operation_id": "readFamilyOverview",
+      "summary": "Read family breakthrough overview",
+      "description": "Use for what this bot handles, the eight family problem domains, and the default analysis workflow.",
+      "triggers": ["家庭破局", "家庭系统", "你能怎么帮我", "范围", "怎么破局"],
+      "use_existing_file": true
+    },
+    {
+      "file": "Parents.md",
+      "operation_id": "readParents",
+      "summary": "Read parent and root guidance",
+      "description": "Use for parents, filial care, root, grief around parents, caregiving, boundaries, and support planning.",
+      "triggers": ["父母", "尽孝", "养老", "陪诊", "父母去世", "根"],
+      "use_existing_file": true
+    },
+    {
+      "file": "Marriage.md",
+      "operation_id": "readMarriage",
+      "summary": "Read marriage and alliance guidance",
+      "description": "Use for marriage, spouse alliance, conflict, cold war, elder interference, division of labor, and safety boundaries.",
+      "triggers": ["夫妻", "婚姻", "伴侣", "冷战", "同盟", "婆媳"],
+      "use_existing_file": true
+    },
+    {
+      "file": "Parenting.md",
+      "operation_id": "readParenting",
+      "summary": "Read parenting guidance",
+      "description": "Use for child positioning, parenting, education, learning anxiety, adolescence, and family roles around children.",
+      "triggers": ["孩子", "亲子", "教育", "青春期", "学习焦虑", "孩子站队"],
+      "use_existing_file": true
+    },
+    {
+      "file": "Siblings.md",
+      "operation_id": "readSiblings",
+      "summary": "Read sibling coordination guidance",
+      "description": "Use for siblings, eldercare coordination, money-and-labor splitting, old wounds, and shared family duties.",
+      "triggers": ["兄弟姐妹", "赡养", "分工", "费用分摊", "照护", "协同"],
+      "use_existing_file": true
+    },
+    {
+      "file": "FamilyCulture.md",
+      "operation_id": "readFamilyCulture",
+      "summary": "Read family culture guidance",
+      "description": "Use for family style, family teachings, family rules, family soul, and family constitution drafting.",
+      "triggers": ["家风", "家训", "家规", "家魂", "家庭公约", "家庭文化"],
+      "use_existing_file": true
+    },
+    {
+      "file": "FamilyGovernance.md",
+      "operation_id": "readFamilyGovernance",
+      "summary": "Read family governance guidance",
+      "description": "Use for family council, family meetings, annual gatherings, ancestor rituals, shared affairs, and governance boundaries.",
+      "triggers": ["家族理事会", "家庭会议", "家族年会", "祭祖", "公共事务", "家族基金"],
+      "use_existing_file": true
+    },
+    {
+      "file": "FamilyLegacy.md",
+      "operation_id": "readFamilyLegacy",
+      "summary": "Read family legacy guidance",
+      "description": "Use for family business, inheritance, succession, next-generation choice, property-vs-legacy distinction, and family-country culture.",
+      "triggers": ["家业", "传承", "家产", "遗嘱", "继承", "接班"],
+      "use_existing_file": true
+    },
+    {
+      "file": "PracticeMethods.md",
+      "operation_id": "readPracticeMethods",
+      "summary": "Read family practice methods",
+      "description": "Use for inward work, coursework methods, emotional processing, and how to use the second-volume methods in family situations.",
+      "triggers": ["功课", "明心见性", "抽离", "填空", "感恩", "重塑"],
+      "use_existing_file": true
+    },
+    {
+      "file": "PracticeTools.md",
+      "operation_id": "readPracticeTools",
+      "summary": "Read family practice tools",
+      "description": "Use for meeting agendas, worksheets, family support tables, family constitution templates, and review checklists.",
+      "triggers": ["模板", "清单", "议程", "表格", "家庭会议模板", "家庭公约模板"],
+      "use_existing_file": true
+    },
+    {
+      "file": "SourceEvidence.md",
+      "operation_id": "readSourceEvidence",
+      "summary": "Read source evidence and release boundary",
+      "description": "Use for source layers, verification, publishing safety, factual claims, and how to use 2.0/1.0/external family materials.",
+      "triggers": ["出处", "原话", "依据", "核验", "能否发布", "证据层级"],
+      "use_existing_file": true
+    },
+    {
+      "file": "RoutingReference.md",
+      "operation_id": "readRoutingReference",
+      "summary": "Read routing reference",
+      "description": "Use for how this family knowledge base should be routed and which file should be read first in each scenario.",
+      "triggers": ["知识库怎么调", "调用地图", "路由", "先读什么", "调取顺序"],
+      "use_existing_file": true
+    }
+  ]
+}
