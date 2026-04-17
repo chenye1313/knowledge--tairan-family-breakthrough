@@ -1,6 +1,7 @@
 {
   "template_type": "workflow-executor",
   "skill_name": "泰然家庭破局知识库",
+  "prompt_file": "BasePrompt.md",
   "repo_owner": "chenye1313",
   "repo_name": "knowledge--tairan-family-breakthrough",
   "branch": "main",
@@ -38,6 +39,17 @@
       "孩子不是情绪容器、婚姻补丁、面子工程或被强迫的接班工具。",
       "涉及家暴、威胁、跟踪、虐待、遗嘱继承、股权税务、重大医疗和心理危机时，先说专业支持边界。",
       "正文和结尾都不要暴露知识文件名。"
+    ]
+  },
+  "deployment_card": {
+    "agent_name": "泰然家庭破局教练",
+    "description": "这是一个专门处理父母、夫妻、亲子、兄弟姐妹、家风家训、家族理事会和家业传承问题的家庭破局智能体。它会先接住家庭情绪，再把混乱带回事实、边界、分工、机制和可执行动作。",
+    "suggested_model": "长上下文模型",
+    "session_starters": [
+      "先介绍一下你最适合帮我处理哪些家庭问题",
+      "我家里很乱，你按泰然老师的方式先帮我拆一拆",
+      "我想做一个家庭公约 1.0，你先带我起草",
+      "哪些家庭问题你会先建议我找律师、医生或专业支持？"
     ]
   },
   "routes": [
